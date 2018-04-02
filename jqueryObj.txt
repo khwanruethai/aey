@@ -1,0 +1,38 @@
+  var data = new Array();
+        data['stock_id'] = new Array();
+        data['stock_name'] = new Array();
+        data['stock_unit'] = new Array();
+        data['stock_price'] = new Array();
+        data['stock_bl'] = new Array();
+        data['stock_num'] = new Array();
+
+
+        $('tr .id_stock').each(function ($k, $v) {
+
+            data["stock_id"]["" + $k] = parseInt($('tr .id_stock').eq($k).val());
+            data['stock_name']["" + $k] = $('tr .stock_name').eq($k).text();
+            data['stock_unit']["" + $k] = $('tr .unit').eq($k).html();
+            data['stock_price']["" + $k] = $('tr .price').eq($k).val();
+            data['stock_bl']["" + $k] = $('tr .bl').eq($k).val();
+            data['stock_num']["" + $k] = $('tr .num').eq($k).val();
+
+        });
+
+        var obj = {};
+        obj.stock_id = {};
+        obj.stock_name = {};
+        obj.stock_unit = {};
+        obj.stock_price = {};
+        obj.stock_bl = {};
+        obj.stock_num = {};
+
+        obj.stock_id = data["stock_id"];
+        obj.stock_name = data['stock_name'];
+        obj.stock_unit = data['stock_unit'];
+        obj.stock_price = data['stock_price'];
+        obj.stock_bl = data['stock_bl'];
+        obj.stock_num = data['stock_num'];
+        var json_data = JSON.stringify(obj);
+        console.log(json_data);
+
+        $('.stockAll').val(json_data);
